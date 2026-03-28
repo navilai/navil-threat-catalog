@@ -5,13 +5,13 @@
   "stats": {
     "attack_classes": 11,
     "detection_categories": 33,
-    "base_vectors": 219
+    "base_vectors": 210
   },
   "attack_classes": [
     {
       "id": "AC-01",
       "name": "Multi-Modal Smuggling",
-      "description": "Hiding malicious instructions in non-text modalities",
+      "description": "Hiding malicious instructions in non-text modalities (images, documents, audio, video) to evade text-based content filters",
       "owasp_refs": [
         "ASI01",
         "ASI09"
@@ -20,225 +20,243 @@
         {
           "id": "AC-01-01",
           "name": "Image-Embedded Instruction Injection",
-          "description": "Encoding attack payloads in images",
+          "description": "Encoding attack payloads in images, QR codes, screenshots, or visual elements",
           "vectors": [
             {
               "id": "AC-01-01-001",
-              "name": "OCR-Evading Text",
-              "description": "Obfuscated text in images",
+              "name": "OCR-Evading Text in Images",
+              "description": "Attacker embeds system prompts or malicious instru",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
-                "ASI01"
+                "ASI01",
+                "ASI09"
               ],
-              "example": "Hidden text in image",
-              "detection_hint": "Monitor OCR outputs for suspicious content"
+              "example": "Image with white text on light backgroun",
+              "detection_hint": "Monitor for images containing hidden/low-contrast "
             },
             {
               "id": "AC-01-01-002",
-              "name": "Steganographic Payload",
-              "description": "Binary payloads in metadata",
+              "name": "Steganographic Payload Embedding",
+              "description": "Hide binary payloads (URLs, credentials, code) in ",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI06"
               ],
-              "example": "URL in EXIF data",
-              "detection_hint": "Analyze image metadata and LSB patterns"
+              "example": "PNG with credential exfiltration URL enc",
+              "detection_hint": "Analyze image metadata and pixel frequency analysi"
             },
             {
               "id": "AC-01-01-003",
-              "name": "QR Code Malware",
-              "description": "QR codes with payloads",
+              "name": "QR Code Malware Delivery",
+              "description": "Attacker generates QR codes linking to attacker-co",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
-                "ASI01"
+                "ASI01",
+                "ASI04"
               ],
-              "example": "QR to attacker URL",
-              "detection_hint": "Validate QR code destinations against whitelist"
+              "example": "QR code in screenshot decoded by agent t",
+              "detection_hint": "Inspect QR code decode operations; validate domain"
             },
             {
               "id": "AC-01-01-004",
-              "name": "Chart Injection",
-              "description": "Axis labels encode prompts",
+              "name": "Chart/Graph Instruction Injection",
+              "description": "Adversarial chart annotations or axis labels encod",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Directive in chart text",
-              "detection_hint": "Sanitize chart labels; flag unusual capitalization"
+              "example": "Bar chart with y-axis label 'IMPORTANT: ",
+              "detection_hint": "Sanitize text extracted from charts; flag charts w"
             },
             {
               "id": "AC-01-01-005",
-              "name": "Pixel Pattern Hijacking",
-              "description": "Color patterns trigger behaviors",
+              "name": "Pixel-Pattern Goal Hijacking",
+              "description": "Specific pixel patterns or color sequences in imag",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Pattern changes task priority",
-              "detection_hint": "Monitor vision model outputs for anomalies"
+              "example": "Image with repeating color pattern that ",
+              "detection_hint": "Monitor vision model outputs for anomalous interpr"
             },
             {
               "id": "AC-01-01-006",
-              "name": "Screenshot Injection",
-              "description": "Fake UI screenshots as prompts",
+              "name": "Screenshot-Based Prompt Injection",
+              "description": "Screenshots of browser windows or fake app interfa",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Fake system alert processed as real",
-              "detection_hint": "Validate UI elements against known interfaces"
+              "example": "Screenshot showing fake 'System Alert' w",
+              "detection_hint": "Identify screenshots as images; extract text from "
             }
           ]
         },
         {
           "id": "AC-01-02",
-          "name": "Document-Embedded Payload",
-          "description": "Payloads in PDFs and docs",
+          "name": "Document-Embedded Payload Delivery",
+          "description": "Malicious payloads hidden in PDFs, Word docs, Excel sheets, or other document formats",
           "vectors": [
             {
               "id": "AC-01-02-001",
-              "name": "PDF Metadata Injection",
-              "description": "Payloads in PDF fields",
+              "name": "PDF Metadata Command Injection",
+              "description": "Attack payloads embedded in PDF metadata fields (A",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Author field with command",
-              "detection_hint": "Sanitize PDF metadata before processing"
+              "example": "PDF with Author field containing 'Ignore",
+              "detection_hint": "Parse and sanitize PDF metadata before processing;"
             },
             {
               "id": "AC-01-02-002",
-              "name": "Macro Execution",
-              "description": "Excel/Word macros trigger actions",
+              "name": "Macro-Based Payload Execution",
+              "description": "Excel or Word macros trigger malicious actions whe",
               "severity": "critical",
               "cve_refs": [],
               "owasp_refs": [
-                "ASI01"
+                "ASI01",
+                "ASI07"
               ],
-              "example": "Hidden macro exfiltrates data",
-              "detection_hint": "Disable macros; scan for embedded code"
+              "example": "Excel file with hidden macro that exfilt",
+              "detection_hint": "Disable or sandbox macro execution; scan documents"
             },
             {
               "id": "AC-01-02-003",
-              "name": "Hidden Text Layers",
-              "description": "White-on-white text extraction",
+              "name": "Hidden Layers and Invisible Text",
+              "description": "Text layers in PDFs or Word docs hidden with white",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Invisible layer with override directive",
-              "detection_hint": "Extract all text layers; compare visible vs hidden"
+              "example": "PDF with invisible text layer stating 'p",
+              "detection_hint": "Extract all text layers from documents; compare vi"
             },
             {
               "id": "AC-01-02-004",
-              "name": "Hyperlink Injection",
-              "description": "Links to attacker sites or data URIs",
+              "name": "Embedded Hyperlink Injection",
+              "description": "Hyperlinks in documents point to attacker sites or",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
-                "ASI01"
+                "ASI01",
+                "ASI04"
               ],
-              "example": "Link to malicious URL or data: URI",
-              "detection_hint": "Validate URL schemes; maintain whitelist"
+              "example": "Word doc with hyperlink text 'Click for ",
+              "detection_hint": "Parse all hyperlinks; validate URL schemes (block "
             },
             {
               "id": "AC-01-02-005",
-              "name": "Comment Injection",
-              "description": "Comments contain directives",
+              "name": "Footnote and Comment Instruction Injection",
+              "description": "Malicious instructions placed in document footnote",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Comment with override instruction",
-              "detection_hint": "Extract and inspect all comments"
+              "example": "Word doc with comment thread containing ",
+              "detection_hint": "Extract and inspect all document comments, footnot"
             },
             {
               "id": "AC-01-02-006",
-              "name": "Form Field Payload",
-              "description": "Form fields with malicious defaults",
+              "name": "Form Field Payload Delivery",
+              "description": "Fillable PDF form fields or Word form controls con",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Form auto-submits to attacker server",
-              "detection_hint": "Validate form endpoints; restrict auto-submission"
+              "example": "PDF form with 'Submit To' URL pointing t",
+              "detection_hint": "Validate all form submission endpoints; alert on f"
             }
           ]
         },
         {
           "id": "AC-01-03",
-          "name": "Audio/Video Instruction",
-          "description": "Commands in audio/video",
+          "name": "Audio/Video Instruction Smuggling",
+          "description": "Malicious instructions encoded in audio (ultrasonic, inaudible frequencies, voice patterns) or video content",
           "vectors": [
             {
               "id": "AC-01-03-001",
-              "name": "Ultrasonic Injection",
-              "description": "Ultrasonic frequencies encode commands",
+              "name": "Ultrasonic Frequency Injection",
+              "description": "Commands encoded in ultrasonic (>20kHz) frequencie",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Ultrasonic payload disables auth",
-              "detection_hint": "Perform spectrographic analysis; alert >15kHz"
+              "example": "Audio file with embedded ultrasonic payl",
+              "detection_hint": "Perform spectrographic analysis of audio; alert on"
             },
             {
               "id": "AC-01-03-002",
-              "name": "Voice Spoofing",
-              "description": "Deepfake audio impersonates authority",
+              "name": "Voice Spoofing and Speaker Impersonation",
+              "description": "Attacker uses voice synthesis or deepfake audio to",
               "severity": "critical",
               "cve_refs": [],
               "owasp_refs": [
-                "ASI03"
+                "ASI03",
+                "ASI08"
               ],
-              "example": "Admin voice grants permissions",
-              "detection_hint": "Implement speaker verification; check synthesis artifacts"
+              "example": "Deepfake audio of admin voice instructin",
+              "detection_hint": "Implement speaker verification; check audio artifa"
             },
             {
               "id": "AC-01-03-003",
-              "name": "Subliminal Encoding",
-              "description": "Hidden frequency-domain instructions",
+              "name": "Subliminal Instruction Encoding",
+              "description": "Speech overlaid with inaudible but frequency-detec",
               "severity": "high",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Background payload in podcast",
-              "detection_hint": "Check for multi-layered audio content"
+              "example": "Podcast with background frequency-domain",
+              "detection_hint": "Analyze audio preprocessing; check for multi-layer"
             },
             {
               "id": "AC-01-03-004",
-              "name": "Video Frame Injection",
-              "description": "Adversarial frames fool vision models",
+              "name": "Video Frame Injection Attacks",
+              "description": "Single-frame or subliminal flashing content in vid",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "Single-frame directive or pattern",
-              "detection_hint": "Analyze for adversarial patterns in frames"
+              "example": "Video with imperceptible single-frame in",
+              "detection_hint": "Monitor for audio/video file uploads to MCP tools "
             },
             {
               "id": "AC-01-03-005",
-              "name": "Multimedia Metadata",
-              "description": "Attack payloads in media metadata",
+              "name": "Embedded Metadata Instruction in Multimedia",
+              "description": "Attack payloads hidden in video/audio metadata (ID",
               "severity": "medium",
               "cve_refs": [],
               "owasp_refs": [
                 "ASI01"
               ],
-              "example": "MP4 comment contains shell command",
-              "detection_hint": "Parse metadata separately; sanitize"
+              "example": "MP4 file with comment metadata containin",
+              "detection_hint": "Parse multimedia metadata separately; sanitize bef"
+            },
+            {
+              "id": "AC-01-03-006",
+              "name": "AI-Generated Voice Command Injection via Real-Time Audio",
+              "description": "Attacker injects AI-synthesized voice commands int",
+              "severity": "high",
+              "cve_refs": [],
+              "owasp_refs": [
+                "ASI01",
+                "ASI02"
+              ],
+              "example": "During a video conference processed by a",
+              "detection_hint": "Implement liveness detection on voice commands; cr"
             }
           ]
         }

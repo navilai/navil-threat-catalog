@@ -19,6 +19,10 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-08-03-004 | Incremental Goal Shifting | Gradual goal modification through requests |
 | AC-09-01-001 | Historical Context Injection | Inject goal direction into conversation history |
 | AC-10-02-001 | Hallucination Exploitation and Fact Fabrication | Agent hallucinates goal justification |
+| AC-01-03-006 | AI-Generated Voice Command Injection via Real-Time Audio | Synthesized voice hijacks agent goals via audio stream |
+| AC-03-01-007 | Indirect Prompt Injection via Trusted Issue Tracker | Issue tracker content hijacks agent goals to exfiltrate data |
+| AC-07-01-007 | MCP Sampling Covert Tool Invocation | Sampling response redirects agent to invoke unauthorized tools |
+| AC-08-01-007 | MCP Sampling Conversation Hijacking | Persistent instruction injection hijacks agent goals across turns |
 
 ## ASI02: Agent Integrity Failure
 
@@ -31,6 +35,9 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-10-01-002 | Metadata Exfiltration via Comments | Hidden metadata corrupts output integrity |
 | AC-10-02-005 | Narrative Framing and Emotional Manipulation | Output integrity compromised through framing |
 | AC-10-03-001 | Malware and Backdoor Code Generation | Generated code contains integrity-breaking malware |
+| AC-01-03-006 | AI-Generated Voice Command Injection via Real-Time Audio | Voice injection compromises input integrity |
+| AC-09-03-006 | Cross-Session State Leakage via Shared MCP Server Memory | Shared state poisoning makes agent responses unreliable |
+| AC-11-03-007 | MCP Server Escape via Debug Interface Exploitation | Debug interface compromise makes all agent operations untrustworthy |
 
 ## ASI03: Identity and Privilege Abuse
 
@@ -51,6 +58,9 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-11-02-001 | CVE-2026-26118: Azure Metadata Service SSRF | Access metadata service for credentials |
 | AC-11-02-004 | Local Service Exploitation via SSRF | Exploit internal services without auth |
 | AC-11-03-001 | Container Breakout via Privilege Escalation | Escape container to host with elevated privileges |
+| AC-02-01-008 | Tool Poisoning via Dynamic Description Mutation | TOCTOU attack spoofs tool identity post-approval |
+| AC-07-01-007 | MCP Sampling Covert Tool Invocation | Sampling bypasses authorization to invoke privileged tools |
+| AC-07-03-006 | Multi-Agent Consensus Poisoning | Fabricated majority overrides legitimate agent decisions |
 
 ## ASI04: Agentic Supply Chain Vulnerabilities
 
@@ -74,6 +84,10 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-04-03-001 | Registry Metadata Injection | Malicious homepage URL in registry |
 | AC-04-03-003 | Registry Signature Forgery | Forge signatures of legitimate packages |
 | AC-04-03-004 | Registry Cache Poisoning | CDN serves malicious artifacts |
+| AC-04-01-008 | Cascading CI/CD Supply Chain Compromise | Multi-ecosystem pivot via Trivy → LiteLLM with .pth persistence |
+| AC-04-03-006 | Registry Search Result Manipulation | SEO-style poisoning pushes malicious packages to top of search |
+| AC-11-03-006 | MCP Development Tool RCE | Unauthenticated endpoint in dev tooling enables RCE (CVE-2026-23744) |
+| AC-02-01-008 | Tool Poisoning via Dynamic Description Mutation | Tool descriptions mutate post-approval to inject malicious behavior |
 
 ## ASI05: Data and Model Poisoning
 
@@ -98,6 +112,7 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-08-01-005 | Adversarial Example Poisoning in Reasoning | Examples teach agent to misclassify |
 | AC-09-03-001 | Incremental Permission Accumulation | Gradually accumulate through repeated requests |
 | AC-09-03-003 | Belief Solidification Through Repetition | Repeat false statement until believed |
+| AC-09-03-006 | Cross-Session State Leakage via Shared MCP Server Memory | Poisoned shared state corrupts data for subsequent users |
 
 ## ASI06: Sensitive Information Disclosure
 
@@ -119,6 +134,7 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-11-02-001 | CVE-2026-26118: Managed Identity Token | Steal Azure managed identity token |
 | AC-11-02-002 | Internal Service Discovery via SSRF | Discover internal databases and services |
 | AC-11-02-003 | Credential Theft via SSRF Metadata | Access AWS/GCP/Azure credential endpoints |
+| AC-03-01-007 | Indirect Prompt Injection via Trusted Issue Tracker | Agent exfiltrates private repo data via injected issue |
 
 ## ASI07: Excessive Agency
 
@@ -143,6 +159,10 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-11-03-001 | Container Breakout via Privilege Escalation | Escape container to host OS |
 | AC-11-03-002 | Volume Mount Exploitation | Write to mounted volumes with elevated privileges |
 | AC-11-03-003 | Docker Socket Abuse | Spawn privileged containers |
+| AC-11-03-006 | MCP Development Tool RCE | Dev tool RCE grants excessive access (CVE-2026-23744) |
+| AC-11-03-007 | MCP Server Escape via Debug Interface | Debug ports enable sandbox escape |
+| AC-07-01-007 | MCP Sampling Covert Tool Invocation | Sampling feature grants unauthorized tool access |
+| AC-11-01-008 | MCP Sampling Resource Theft | Sampling drains compute quota beyond authorized scope |
 
 ## ASI08: Human Oversight Subversion
 
@@ -168,6 +188,8 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-09-02-002 | Condition-Based Delayed Activation | Payload activates at specific condition |
 | AC-09-02-003 | Accumulation Attack | Attack effectiveness increases with accumulated state |
 | AC-10-02-003 | Selective Information Omission | Omit contradictory information |
+| AC-08-01-007 | MCP Sampling Conversation Hijacking | Persistent instructions subvert human oversight across turns |
+| AC-07-03-006 | Multi-Agent Consensus Poisoning | Fabricated majority bypasses human review mechanisms |
 
 ## ASI09: Misinformation and Manipulation
 
@@ -205,3 +227,4 @@ This document maps each OWASP Agentic Application risk to corresponding Navil Th
 | AC-11-01-005 | Agent-to-Agent Billing Abuse (10,000x) | Low-privilege agent calls paid APIs 10,000x |
 | AC-11-01-006 | Rate Limit Bypass and Quota Exhaustion | Bypass rate limiting; exhaust quota |
 | AC-11-01-007 | Disk Space Exhaustion and Log Flooding | Fill disk with agent-generated logs |
+| AC-11-01-008 | MCP Sampling Resource Theft via Compute Quota Drain | Sampling drains API credits for attacker's workload |
