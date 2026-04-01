@@ -1,4 +1,4 @@
-.PHONY: validate update release help
+.PHONY: validate update release sync-index help
 
 help:
 	@echo "navil-threat-catalog"
@@ -16,8 +16,12 @@ update:
 	python3 scripts/validate.py
 	python3 scripts/sync_yaml.py
 
+sync-index:
+	python3 scripts/gen_index.py
+
 release:
 	@if [ -z "$(VERSION)" ]; then echo "Usage: make release VERSION=v1.x.x"; exit 1; fi
+	$(MAKE) sync-index
 	git add catalog/ mappings/ README.md
 	git commit -m "release: $(VERSION)"
 	gh release create $(VERSION) --title "$(VERSION)" --generate-notes

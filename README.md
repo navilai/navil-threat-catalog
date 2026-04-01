@@ -3,7 +3,7 @@
 **The MITRE ATT&CK of agent security.**
 
 ![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)
-![Vectors](https://img.shields.io/badge/Vectors-219-red)
+![Vectors](https://img.shields.io/badge/Vectors-210-red)
 ![Classes](https://img.shields.io/badge/Attack%20Classes-11-orange)
 ![Categories](https://img.shields.io/badge/Detection%20Categories-33-yellow)
 
@@ -19,7 +19,7 @@ Navil Threat Catalog is a comprehensive, open-source threat taxonomy designed fo
 |--------|-------|
 | Attack Classes | 11 |
 | Detection Categories | 33 |
-| Attack Vectors | 219 |
+| Attack Vectors | 210 |
 | Combinatorial Scenarios | 1M+ |
 | License | CC BY-SA 4.0 |
 

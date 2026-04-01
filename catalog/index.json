@@ -1,0 +1,323 @@
+{
+  "version": "1.0.0",
+  "attack_classes": [
+    {
+      "id": "AC-01",
+      "name": "Multi-Modal Smuggling",
+      "slug": "multimodal_smuggling",
+      "owasp_refs": [
+        "ASI01",
+        "ASI09"
+      ],
+      "categories": [
+        {
+          "id": "AC-01-01",
+          "name": "Image-Embedded Instruction Injection",
+          "slug": "imageembedded_instruction_injection",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-01-02",
+          "name": "Document-Embedded Payload Delivery",
+          "slug": "documentembedded_payload_delivery",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-01-03",
+          "name": "Audio/Video Instruction Smuggling",
+          "slug": "audio_video_instruction_smuggling",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-02",
+      "name": "Handshake Hijacking",
+      "slug": "handshake_hijacking",
+      "owasp_refs": [
+        "ASI03",
+        "ASI04"
+      ],
+      "categories": [
+        {
+          "id": "AC-02-01",
+          "name": "Tool Registration Spoofing",
+          "slug": "tool_registration_spoofing",
+          "vector_count": 8
+        },
+        {
+          "id": "AC-02-02",
+          "name": "Protocol Downgrade and Negotiation Attacks",
+          "slug": "protocol_downgrade_and_negotiation_attacks",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-02-03",
+          "name": "Shadow Tool Registration",
+          "slug": "shadow_tool_registration",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-03",
+      "name": "RAG/Memory Poisoning",
+      "slug": "rag_memory_poisoning",
+      "owasp_refs": [
+        "ASI05",
+        "ASI09"
+      ],
+      "categories": [
+        {
+          "id": "AC-03-01",
+          "name": "Vector Store Poisoning",
+          "slug": "vector_store_poisoning",
+          "vector_count": 7
+        },
+        {
+          "id": "AC-03-02",
+          "name": "Persistent Memory Corruption",
+          "slug": "persistent_memory_corruption",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-03-03",
+          "name": "Context Window Manipulation",
+          "slug": "context_window_manipulation",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-04",
+      "name": "Supply Chain/Discovery",
+      "slug": "supply_chain_discovery",
+      "owasp_refs": [
+        "ASI04"
+      ],
+      "categories": [
+        {
+          "id": "AC-04-01",
+          "name": "Malicious MCP Package Publication",
+          "slug": "malicious_mcp_package_publication",
+          "vector_count": 8
+        },
+        {
+          "id": "AC-04-02",
+          "name": "Dependency Confusion and Typosquatting",
+          "slug": "dependency_confusion_and_typosquatting",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-04-03",
+          "name": "MCP Registry Poisoning",
+          "slug": "mcp_registry_poisoning",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-05",
+      "name": "Privilege Escalation",
+      "slug": "privilege_escalation",
+      "owasp_refs": [
+        "ASI03",
+        "ASI07"
+      ],
+      "categories": [
+        {
+          "id": "AC-05-01",
+          "name": "Tool Permission Escalation",
+          "slug": "tool_permission_escalation",
+          "vector_count": 7
+        },
+        {
+          "id": "AC-05-02",
+          "name": "Cross-Agent Privilege Transfer",
+          "slug": "crossagent_privilege_transfer",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-05-03",
+          "name": "Token and Credential Scope Expansion",
+          "slug": "token_and_credential_scope_expansion",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-06",
+      "name": "Anti-Forensics",
+      "slug": "antiforensics",
+      "owasp_refs": [
+        "ASI08"
+      ],
+      "categories": [
+        {
+          "id": "AC-06-01",
+          "name": "Log Evasion and Manipulation",
+          "slug": "log_evasion_and_manipulation",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-06-02",
+          "name": "Trace Obfuscation",
+          "slug": "trace_obfuscation",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-06-03",
+          "name": "Behavioral Camouflage",
+          "slug": "behavioral_camouflage",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-07",
+      "name": "Agent Collusion & Multi-Agent",
+      "slug": "agent_collusion_and_multiagent",
+      "owasp_refs": [
+        "ASI01",
+        "ASI03"
+      ],
+      "categories": [
+        {
+          "id": "AC-07-01",
+          "name": "Inter-Agent Prompt Injection",
+          "slug": "interagent_prompt_injection",
+          "vector_count": 7
+        },
+        {
+          "id": "AC-07-02",
+          "name": "Orchestrator Compromise",
+          "slug": "orchestrator_compromise",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-07-03",
+          "name": "Agent Swarm Manipulation",
+          "slug": "agent_swarm_manipulation",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-08",
+      "name": "Cognitive Architecture Exploitation",
+      "slug": "cognitive_architecture_exploitation",
+      "owasp_refs": [
+        "ASI01",
+        "ASI08"
+      ],
+      "categories": [
+        {
+          "id": "AC-08-01",
+          "name": "Reasoning Loop Manipulation",
+          "slug": "reasoning_loop_manipulation",
+          "vector_count": 7
+        },
+        {
+          "id": "AC-08-02",
+          "name": "Context Confusion Attacks",
+          "slug": "context_confusion_attacks",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-08-03",
+          "name": "Goal Hijacking via Framing",
+          "slug": "goal_hijacking_via_framing",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-09",
+      "name": "Temporal & Stateful Attacks",
+      "slug": "temporal_and_stateful_attacks",
+      "owasp_refs": [
+        "ASI05",
+        "ASI08"
+      ],
+      "categories": [
+        {
+          "id": "AC-09-01",
+          "name": "Session History Exploitation",
+          "slug": "session_history_exploitation",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-09-02",
+          "name": "Delayed Trigger and Time-Bomb Attacks",
+          "slug": "delayed_trigger_and_timebomb_attacks",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-09-03",
+          "name": "State Accumulation Attacks",
+          "slug": "state_accumulation_attacks",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-10",
+      "name": "Output Manipulation & Weaponization",
+      "slug": "output_manipulation_and_weaponization",
+      "owasp_refs": [
+        "ASI06",
+        "ASI09",
+        "ASI10"
+      ],
+      "categories": [
+        {
+          "id": "AC-10-01",
+          "name": "Data Exfiltration via Agent Output",
+          "slug": "data_exfiltration_via_agent_output",
+          "vector_count": 7
+        },
+        {
+          "id": "AC-10-02",
+          "name": "Misinformation and Content Manipulation",
+          "slug": "misinformation_and_content_manipulation",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-10-03",
+          "name": "Weaponized Code Generation",
+          "slug": "weaponized_code_generation",
+          "vector_count": 6
+        }
+      ]
+    },
+    {
+      "id": "AC-11",
+      "name": "Infrastructure & Runtime Attacks",
+      "slug": "infrastructure_and_runtime_attacks",
+      "owasp_refs": [
+        "ASI07",
+        "ASI10"
+      ],
+      "categories": [
+        {
+          "id": "AC-11-01",
+          "name": "Resource Exhaustion and Denial of Wallet",
+          "slug": "resource_exhaustion_and_denial_of_wallet",
+          "vector_count": 8
+        },
+        {
+          "id": "AC-11-02",
+          "name": "Server-Side Request Forgery via MCP",
+          "slug": "serverside_request_forgery_via_mcp",
+          "vector_count": 6
+        },
+        {
+          "id": "AC-11-03",
+          "name": "Container and Runtime Escape",
+          "slug": "container_and_runtime_escape",
+          "vector_count": 7
+        }
+      ]
+    }
+  ]
+}
