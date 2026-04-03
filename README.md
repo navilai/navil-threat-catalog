@@ -6,6 +6,7 @@
 ![Vectors](https://img.shields.io/badge/Vectors-210-red)
 ![Classes](https://img.shields.io/badge/Attack%20Classes-11-orange)
 ![Categories](https://img.shields.io/badge/Detection%20Categories-33-yellow)
+![SAFE-MCP Aligned](https://img.shields.io/badge/SAFE--MCP-Aligned-blue)
 
 ## Overview
 
@@ -101,6 +102,30 @@ This catalog is grounded in documented attacks:
 4. **CVE-2025-68143/44/45** - Anthropic mcp-server-git vulnerable to prompt injection (RCE), path validation bypass, and unrestricted git_init. Attackers execute arbitrary code with SSH key access. *Covered: AC-05-03-001, AC-05-03-002, AC-05-03-003*
 
 5. **$82K Gemini API Bill in 48 Hours** - Stolen API key exploited for rapid API calls; denial of wallet via token amplification reaching 142.4x on malicious MCP responses. *Covered: AC-11-01-001, AC-11-01-002*
+
+## SAFE-MCP Alignment
+
+Navil Threat Catalog is fully aligned with [SAFE-MCP](https://github.com/safe-agentic-framework/safe-mcp),
+the open standard for MCP security adopted by the Linux Foundation and OpenID Foundation.
+
+| SAFE-MCP | Navil Coverage |
+|---|---|
+| Tool Poisoning and Description Mutation | AC-02 (Handshake Hijacking) |
+| Prompt Injection and Manipulation | AC-01, AC-08 |
+| OAuth and Authentication Abuse | AC-02, AC-05 |
+| Supply Chain and Registry Attacks | AC-04 (comprehensive) |
+| Privilege Escalation | AC-05 |
+| Session Hijacking | AC-02 |
+| RAG and Memory Poisoning | AC-03 |
+| Multi-Agent Orchestration Attacks | AC-07 |
+| Cognitive Architecture Exploitation | AC-08 |
+| Temporal and Stateful Attacks | AC-09 |
+| Credential Scope Expansion | AC-05, AC-11 |
+| Anti-Forensics and Behavioral Camouflage | AC-06 (comprehensive) |
+| Infrastructure and Runtime Exploitation | AC-11 |
+| Output Manipulation and Weaponization | AC-10 |
+
+Full alignment mapping: [mappings/safe-mcp.md](mappings/safe-mcp.md)
 
 ## Contributing
 
